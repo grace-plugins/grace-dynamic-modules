@@ -20,7 +20,7 @@ import grails.util.GrailsUtil
 
 class DynamicModulesGrailsPlugin extends Plugin {
 
-    def version = '1.0.0-SNAPSHOT'
+    def version = '1.0.0-M1'
     def grailsVersion = "2023.0.0 > *"
     def title = 'Grace Dynamic Modules Plugin'
     def author = 'Michael Yan'
