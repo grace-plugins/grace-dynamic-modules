@@ -1,0 +1,154 @@
+buildscript {
+    repositories {
+        // mavenLocal()
+        mavenCentral()
+        // maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://repo.gradle.org/gradle/libs-releases" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
+ext."signing.keyId" = project.hasProperty("signing.keyId") ? project.getProperty('signing.keyId') : System.getenv('SIGNING_KEY')
+ext."signing.password" = project.hasProperty("signing.password") ? project.getProperty('signing.password') : System.getenv('SIGNING_PASSPHRASE')
+ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile") ? project.getProperty('signing.secretKeyRingFile') : ("${System.properties['user.home']}${File.separator}.gnupg${File.separator}secring.gpg")
+ext.isReleaseVersion = !projectVersion.endsWith("SNAPSHOT")
+
+version projectVersion
+group "org.graceframework.plugins"
+
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "groovy"
+apply plugin: "org.graceframework.grace-plugin"
+apply plugin: "maven-publish"
+apply plugin: "signing"
+
+repositories {
+    // mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly "org.springframework.boot:spring-boot-autoconfigure"
+    compileOnly "org.graceframework:grace-api"
+    compileOnly "org.graceframework:grace-bootstrap"
+    compileOnly "org.graceframework:grace-core"
+    implementation "org.graceframework:grace-plugin-api"
+    profile "org.graceframework.profiles:plugin"
+}
+
+tasks.withType(Sign) {
+   onlyIf { isReleaseVersion }
+}
+
+tasks.withType(GroovyCompile) {
+    configure(groovyOptions) {
+        forkOptions.jvmArgs = ['-Xmx1024m']
+    }
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    withJavadocJar()
+    withSourcesJar()
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    manifest.mainAttributes(
+        "Built-By": System.properties['user.name'],
+        "Created-By": System.properties['java.vm.version'] + " (" + System.properties['java.vm.vendor'] + ")",
+        "Implementation-Title": "Grace Dynamic Modules Plugin",
+        "Implementation-Version": projectVersion,
+        "Implementation-Vendor": 'Grace Plugins')
+    enabled = true
+    includeEmptyDirs = false
+}
+
+bootJar.enabled = false
+bootRun.enabled = false
+findMainClass.enabled = false
+shell.enabled = false
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = projectName
+            version = project.version
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+
+            from components.java
+
+            artifact source: "${project.sourceSets.main.groovy.outputDir}/META-INF/grails-plugin.xml",
+                classifier: "plugin",
+                extension: 'xml'
+            pom {
+                name = "Grace Dynamic Modules Plugin"
+                description = "A powerful and flexible, extensible administration framework and management console for Grace."
+                url = 'https://github.com/grace-plugins/grace-dynamic-modules'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'rainboyan'
+                        name = 'Michael Yan'
+                        email = 'rain@rainboyan.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/grace-plugins/grace-dynamic-modules.git'
+                    developerConnection = 'scm:git:ssh://github.com:grace-plugins/grace-dynamic-modules.git'
+                    url = 'https://github.com/grace-plugins/grace-dynamic-modules'
+                }
+            }
+
+            pom.withXml {
+                def pomNode = asNode()
+
+                try {
+                    pomNode.dependencyManagement.replaceNode {}
+                } catch (Throwable e) {
+                    // ignore
+                }
+
+                // simply remove dependencies without a version
+                // version-less dependencies are handled with dependencyManagement
+                // see https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/8 for more complete solutions
+                pomNode.dependencies.dependency.findAll {
+                    it.version.text().isEmpty()
+                }.each {
+                    try {
+                        it.replaceNode {}
+                    } catch (Throwable e) {
+                        // ignore
+                    }
+                }
+            }
+        }
+    }
+}
+
+afterEvaluate {
+    signing {
+        required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+        sign publishing.publications.maven
+    }
+}

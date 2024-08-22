@@ -1,0 +1,3 @@
+rootProject.name = 'grace-dynamic-modules'
+
+include 'plugin'
