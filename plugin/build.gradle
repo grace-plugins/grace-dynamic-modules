@@ -98,7 +98,7 @@ publishing {
                 extension: 'xml'
             pom {
                 name = "Grace Dynamic Modules Plugin"
-                description = "A powerful and flexible, extensible administration framework and management console for Grace."
+                description = "Grace Dynamic Modules Plugin offer new ways of creating modular and maintainable Grace applications"
                 url = 'https://github.com/grace-plugins/grace-dynamic-modules'
                 licenses {
                     license {
