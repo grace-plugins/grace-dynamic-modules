@@ -1,5 +1,5 @@
 /*
- * Copyright 2022-2023 the original author or authors.
+ * Copyright 2022-2025 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,30 @@
  */
 package org.grails.plugins.modules
 
-import grails.plugins.Plugin
+import groovy.transform.CompileStatic
+
+import grails.plugins.descriptors.WebItemModuleDescriptor
+import grails.plugins.descriptors.WebSectionModuleDescriptor
+import grails.plugins.DynamicPlugin
 import grails.util.GrailsUtil
 
-class DynamicModulesGrailsPlugin extends Plugin {
+/**
+ * Provide Dynamic Modules for {@link DynamicPlugin}.
+ *
+ * @author Michael Yan
+ * @since 1.0
+ */
+@CompileStatic
+class DynamicModulesGrailsPlugin extends DynamicPlugin {
 
     def version = '1.0.0-SNAPSHOT'
     def grailsVersion = "2023.0.0 > *"
+
+    def providedModules = [
+            WebItemModuleDescriptor,
+            WebSectionModuleDescriptor
+    ]
+
     def title = 'Grace Dynamic Modules Plugin'
     def author = 'Michael Yan'
     def authorEmail = 'rain@rainboyan.com'
