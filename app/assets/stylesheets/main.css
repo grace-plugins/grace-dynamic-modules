@@ -202,6 +202,8 @@ a.navbar-brand {
     -moz-border-radius: 0.3em;
     -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .navbar li.dropdown-item a {

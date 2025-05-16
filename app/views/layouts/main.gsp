@@ -25,55 +25,26 @@
 
         <div class="collapse navbar-collapse" aria-expanded="false" id="navbarContent">
             <ul class="navbar-nav ms-auto navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <g:if env="development">
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Environment: ${grails.util.Environment.current.name}</a></li>
-                        <li><a class="dropdown-item" href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
-                        <li><a class="dropdown-item" href="#">App version:
-                            <g:meta name="info.app.version"/></a>
+                <g:each var="item" in="${applicationContext.getBean('webInterfaceManager').getDisplayableItems('topnav', [:])}">
+                    <g:if test="${item}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${item.link?.url}"><g:message code="${item.i18nNameKey}" default="${item.name}" /></a>
                         </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Grace version:
-                            <g:meta name="info.app.grailsVersion"/></a>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Groovy version: ${GroovySystem.getVersion()}</a></li>
-                        <li><a class="dropdown-item" href="#">JVM version: ${System.getProperty('java.version')}</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artefacts</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Controllers: ${grailsApplication.controllerClasses.size()}</a></li>
-                        <li><a class="dropdown-item" href="#">Domains: ${grailsApplication.domainClasses.size()}</a></li>
-                        <li><a class="dropdown-item" href="#">Services: ${grailsApplication.serviceClasses.size()}</a></li>
-                        <li><a class="dropdown-item" href="#">Tag Libraries: ${grailsApplication.tagLibClasses.size()}</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins</a>
-                    <ul class="dropdown-menu">
-                        <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                            <li><a class="dropdown-item" href="#">${plugin.name} - ${plugin.version}</a></li>
-                        </g:each>
-                    </ul>
-                </li>
-                </g:if>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Management</a>
-                    <ul class="dropdown-menu">
-                        <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.name } }">
-                            <li class="controller">
-                                <g:link class="dropdown-item" controller="${c.logicalPropertyName}">
-                                    <g:message code="${c.name.uncapitalize()}.label" default="${c.name}"/>
-                                </g:link>
-                            </li>
-                        </g:each>
-                    </ul>
-                </li>
+                    </g:if>
+                </g:each>
+                <g:each var="section" in="${applicationContext.getBean('webInterfaceManager').getDisplayableSections('topnav', [:])}">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <g:message code="${section.i18nNameKey}" default="${section.name}" /> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <g:each var="item" in="${applicationContext.getBean('webInterfaceManager').getDisplayableItems(section.key, [:])}" >
+                            <li><a class="dropdown-item" href="${item.link?.url}"><g:message code="${item.i18nNameKey}" default="${item.name}" /></a></li>
+                            </g:each>
+                        </ul>
+                    </li>
+                </g:each>
+                
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Languages</a>
                     <ul class="dropdown-menu dropdown-menu-end">
