@@ -1,0 +1,4 @@
+grails.plugins.descriptors
+org.grails.plugins.modules
+org.grails.plugins.web
+org.grails.plugins.web.model
