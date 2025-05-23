@@ -1,0 +1,3 @@
+This is the changelog,
+
+### 1.0.0-M1
