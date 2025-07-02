@@ -44,6 +44,8 @@ function addJsClass(el) {
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#usage"><strong>3</strong><span>Usage</span></a></div>
                                 
+                                <div class="toc-item" style="margin-left:0"><a href="#support"><strong>4</strong><span>Support</span></a></div>
+                                
                             </div>
                         </div>
                     </li>
@@ -82,6 +84,8 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#usage"><strong>3</strong><span>Usage</span></a></div>
                             
+                            <div class="toc-item" style="margin-left:0px"><a href="#support"><strong>4</strong><span>Support</span></a></div>
+                            
                             <div style="clear:both" ></div>
                         </div>
                         
@@ -116,12 +120,95 @@ function addJsClass(el) {
 </div>
 
 
-<div class="paragraph">
-<p>This is the changelog,</p>
+<div class="sect2">
+<h3 id="_1_0_0_rc2">1.0.0-RC2</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Update README</p>
+</li>
+<li>
+<p>Update documentation</p>
+</li>
+<li>
+<p>Migrate to Central Portal OSSRH Staging API</p>
+</li>
+<li>
+<p>Update README - Add document links - Add badge</p>
+</li>
+<li>
+<p>Correct the groovy api url</p>
+</li>
+<li>
+<p>Upgrade to Gradle 7.6.5</p>
+</li>
+<li>
+<p>Fixed FOLDER: build/docs</p>
+</li>
+<li>
+<p>Update github workflows - Generate and deploy the release version of docs</p>
+</li>
+<li>
+<p>Update github workflows - Upgrade to setup-gradle@v4</p>
+</li>
+<li>
+<p>Add changelog</p>
+</li>
+<li>
+<p>Add docs workflow</p>
+</li>
+<li>
+<p>Add docs</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_1_0_0_rc1">1.0.0-RC1</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Update sample application, add Menu plugin to demonstrate how to use</p>
+</li>
+<li>
+<p>Provide dynamic modules WebSection and WebItem in this plugin</p>
+</li>
+<li>
+<p>Remove META-INF/grails-plugin.xml in favor of the generated file</p>
+</li>
+<li>
+<p>Don&#8217;t use mavenLocal()</p>
+</li>
+<li>
+<p>Upgrade to Gradle Nexus Publish Plugin 2.0.0</p>
+</li>
+<li>
+<p>Update POM description</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_1_0_0_m1">1.0.0-M1</h3>
-
+<div class="ulist">
+<ul>
+<li>
+<p>Release v1.0.0-M1</p>
+</li>
+<li>
+<p>Update README.md</p>
+</li>
+<li>
+<p>Adds Auto-Configure <code>DynamicModulesAutoConfiguration</code></p>
+</li>
+<li>
+<p>Setup github workflow</p>
+</li>
+<li>
+<p>Initial project</p>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -139,23 +226,31 @@ function addJsClass(el) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-gsp</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
-    maven {
-        url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://s01.oss.sonatype.org/content/repositories/snapshots/</span><span class="delimiter">&quot;</span></span>
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
 }
 
 dependencies {
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework:grace-plugin-api</span><span class="delimiter">&quot;</span></span>
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins:dynamic-modules:VERSION</span><span class="delimiter">&quot;</span></span>
+    implementation "org.graceframework:grace-plugin-api"
+    implementation "org.graceframework.plugins:dynamic-modules:1.0.0-SNAPSHOT"
 }</code></pre>
 </div>
+</div>
+
+
+<h1 id="support"><a class="anchor" href="#support"></a>4 Support</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grace-plugins/grace-dynamic-modules/edit/main/docs/guide/support.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>For support, please use the <a href="https://github.com/orgs/graceframework/discussions">Grace Discussions</a> or open an issue on <a href="{github}/issues">Github Issues</a>.</p>
 </div>
 
                     </div>
@@ -175,7 +270,7 @@ dependencies {
         </table>
 
         <div id="footer">
-            Copyright &copy; 2025 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+            Copyright &copy; 2022-2025 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
             
         </div>
 

@@ -47,6 +47,9 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../guide/usage.html"><strong>3</strong><span>Usage</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/support.html"><strong>4</strong><span>Support</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -74,6 +77,8 @@ function addJsClass() {
                 <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
 
                 
+                    <div class="toc-item next-right"><a href="../guide/support.html"><strong>4</strong><span>Support</span> >></a></div>
+                
 
 
                 <div class="project">
@@ -100,21 +105,15 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-gsp</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy">apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
-    maven {
-        url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://s01.oss.sonatype.org/content/repositories/snapshots/</span><span class="delimiter">&quot;</span></span>
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
 }
 
 dependencies {
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework:grace-plugin-api</span><span class="delimiter">&quot;</span></span>
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins:dynamic-modules:VERSION</span><span class="delimiter">&quot;</span></span>
+    implementation "org.graceframework:grace-plugin-api"
+    implementation "org.graceframework.plugins:dynamic-modules:1.0.0-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
@@ -123,6 +122,8 @@ dependencies {
                 <div style="clear:both;margin-top:15px;"></div>
                 
                     <div class="toc-item prev-left"><a href="../guide/changelog.html">&lt;&lt; <strong>2</strong><span>Changelog</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../guide/support.html"><strong>4</strong><span>Support</span> >></a></div>
                 
                 <div style="clear:both"></div>
             </div>
@@ -142,7 +143,7 @@ dependencies {
 </table>
 
 <div id="footer">
-    Copyright &copy; 2025 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    Copyright &copy; 2022-2025 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
     
 </div>
 
