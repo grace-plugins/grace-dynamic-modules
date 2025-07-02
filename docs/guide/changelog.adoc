@@ -1,3 +1,31 @@
-This is the changelog,
+### 1.0.0-RC2
+
+* Update README
+* Update documentation
+* Migrate to Central Portal OSSRH Staging API
+* Update README - Add document links - Add badge
+* Correct the groovy api url
+* Upgrade to Gradle 7.6.5
+* Fixed FOLDER: build/docs
+* Update github workflows - Generate and deploy the release version of docs
+* Update github workflows - Upgrade to setup-gradle@v4
+* Add changelog
+* Add docs workflow
+* Add docs
+
+### 1.0.0-RC1
+
+* Update sample application, add Menu plugin to demonstrate how to use
+* Provide dynamic modules WebSection and WebItem in this plugin
+* Remove META-INF/grails-plugin.xml in favor of the generated file
+* Don't use mavenLocal()
+* Upgrade to Gradle Nexus Publish Plugin 2.0.0
+* Update POM description
 
 ### 1.0.0-M1
+
+* Release v1.0.0-M1
+* Update README.md
+* Adds Auto-Configure `DynamicModulesAutoConfiguration`
+* Setup github workflow
+* Initial project

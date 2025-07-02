@@ -1,21 +1,15 @@
 Add `dynamic-modules` plugin to your `build.gradle`,
 
-[source,groovy]
+[source,groovy,subs="attributes"]
 ----
 apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
 }
 
 dependencies {
     implementation "org.graceframework:grace-plugin-api"
-    implementation "org.graceframework.plugins:dynamic-modules:VERSION"
+    implementation "org.graceframework.plugins:dynamic-modules:{version}"
 }
 ----
