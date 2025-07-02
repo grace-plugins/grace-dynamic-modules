@@ -21,35 +21,21 @@ We can use Dynamic Modules to maximize the use of Grace plugins and create an op
 
 - Grace **2023.0.0**
 
-## Ducumentation
-
-* [1.0.x](https://plugins.graceframework.org/grace-dynamic-modules/1.0.x/)
-
 ## Usage
-
-### Add `dynamic-modules` plugin
 
 Add `dynamic-modules` plugin to your `build.gradle`,
 
-```gradle
+```groovy
 
 apply plugin: "org.graceframework.grace-gsp"
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-        mavenContent {
-            snapshotsOnly()
-        }
-    }
 }
 
 dependencies {
     implementation "org.graceframework:grace-plugin-api"
     implementation "org.graceframework.plugins:dynamic-modules"
-    // Use dynamic-modules with admin plugin
-    implementation "org.graceframework.plugins:admin:$adminVersion"
 }
 
 ```
@@ -64,13 +50,9 @@ cd grace-dynamic-modules
 ./gradlew publishToMavenLocal
 ```
 
-## What's New
+## Ducumentation
 
-### 1.0.0-SNAPSHOT
-
-* Upgrade to Grace 2023.0.0
-* Upgrade to Groovy 4.0.22
-
+* [1.0.x](https://plugins.graceframework.org/grace-dynamic-modules/1.0.x/)
 
 ## Links
 
