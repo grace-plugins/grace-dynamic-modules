@@ -158,6 +158,7 @@ tasks.withType(Test) {
 }
 
 nexusPublishing {
+    packageGroup = 'org.graceframework.plugins'
     repositories {
         sonatype {
             def mavenUser = System.getenv("MAVEN_CENTRAL_USER") ?: project.hasProperty("mavenCentralUsername") ? project.mavenCentralUsername : ''
