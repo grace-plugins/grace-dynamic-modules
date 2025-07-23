@@ -9,6 +9,7 @@ buildscript {
             url = 'https://central.sonatype.com/repository/maven-snapshots/'
 
             content {
+                includeGroup 'org.graceframework'
                 includeGroup 'org.graceframework.plugins'
             }
             mavenContent {
@@ -46,6 +47,7 @@ repositories {
         url = 'https://central.sonatype.com/repository/maven-snapshots/'
 
         content {
+            includeGroup 'org.graceframework'
             includeGroup 'org.graceframework.plugins'
         }
         mavenContent {

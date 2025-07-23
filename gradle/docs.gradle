@@ -1,6 +1,17 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            name = 'Maven Central Portal Snapshots'
+            url = 'https://central.sonatype.com/repository/maven-snapshots/'
+
+            content {
+                includeGroup 'org.graceframework'
+            }
+            mavenContent {
+                snapshotsOnly()
+            }
+        }
     }
     dependencies {
         classpath "org.graceframework:grace-docs:$graceVersion"
@@ -13,6 +24,17 @@ def DOCUMENTATION_GROUP = 'Documentation'
 
 repositories {
     mavenCentral()
+    maven {
+        name = 'Maven Central Portal Snapshots'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
+
+        content {
+            includeGroup 'org.graceframework'
+        }
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
 }
 
 configurations {
