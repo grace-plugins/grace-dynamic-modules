@@ -112,8 +112,45 @@ repositories {
 }
 
 dependencies {
-    implementation "org.graceframework:grace-plugin-api"
     implementation "org.graceframework.plugins:dynamic-modules:1.0.0-SNAPSHOT"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Currently, Grace <code>dynamic-modules</code> plugin provides two module types,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>WebItem</p>
+</li>
+<li>
+<p>WebSection</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">app/plugins/grace/demos/MenuGrailsPlugin.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="type">class</span> <span class="class">MenuGrailsPlugin</span> <span class="directive">extends</span> DynamicPlugin {
+    Closure doWithDynamicModules() { {-&gt;
+        webSection(<span class="key">key</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">topnav</span><span class="delimiter">&quot;</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Top Navigation Bar</span><span class="delimiter">&quot;</span></span>, <span class="key">i18nNameKey</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">top.navigation.bar</span><span class="delimiter">&quot;</span></span>)
+
+        webItem(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">about</span><span class="delimiter">'</span></span>, <span class="key">i18nNameKey</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.about</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">About US</span><span class="delimiter">'</span></span>, <span class="key">section</span>: <span class="string"><span class="delimiter">'</span><span class="content">topnav</span><span class="delimiter">'</span></span>, <span class="key">description</span>: <span class="string"><span class="delimiter">'</span><span class="content">This is a description</span><span class="delimiter">'</span></span>) {
+            label(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.about</span><span class="delimiter">'</span></span>)
+            link(<span class="key">linkId</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">about_link</span><span class="delimiter">&quot;</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/about</span><span class="delimiter">'</span></span>)
+        }
+        webItem(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">product</span><span class="delimiter">'</span></span>, <span class="key">i18nNameKey</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.product</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Products</span><span class="delimiter">'</span></span>, <span class="key">section</span>: <span class="string"><span class="delimiter">'</span><span class="content">topnav</span><span class="delimiter">'</span></span>) {
+            label(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.product</span><span class="delimiter">'</span></span>)
+            link(<span class="key">linkId</span>: <span class="string"><span class="delimiter">'</span><span class="content">product_link</span><span class="delimiter">'</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/product</span><span class="delimiter">'</span></span>)
+        }
+        webItem(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">contact</span><span class="delimiter">'</span></span>, <span class="key">i18nNameKey</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.contact</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Contact</span><span class="delimiter">'</span></span>, <span class="key">section</span>: <span class="string"><span class="delimiter">'</span><span class="content">topnav</span><span class="delimiter">'</span></span>) {
+            link(<span class="key">linkId</span>: <span class="string"><span class="delimiter">'</span><span class="content">contact_link</span><span class="delimiter">'</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/contact</span><span class="delimiter">'</span></span>)
+        }
+        webItem(<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">help</span><span class="delimiter">'</span></span>, <span class="key">i18nNameKey</span>: <span class="string"><span class="delimiter">'</span><span class="content">menu.help</span><span class="delimiter">'</span></span>, <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">Help</span><span class="delimiter">'</span></span>, <span class="key">section</span>: <span class="string"><span class="delimiter">'</span><span class="content">topnav</span><span class="delimiter">'</span></span>) {
+            link(<span class="key">linkId</span>: <span class="string"><span class="delimiter">'</span><span class="content">help_link</span><span class="delimiter">'</span></span>, <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/help</span><span class="delimiter">'</span></span>)
+        }
+    }}
 }</code></pre>
 </div>
 </div>
