@@ -48,7 +48,7 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Languages</a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <g:each var="lang" in="${['en', 'cs', 'da', 'de', 'es', 'fr', 'it', 'ja', 'nb', 'nl', 'pl', 'pt_BR', 'pt_PT', 'ru', 'sk', 'sv', 'th', 'zh_CN', 'zh_TW']}">
+                        <g:each var="lang" in="${applicationContext.getBean('languageManager').languages*.key}">
                             <g:set var="locale" value="${Locale.forLanguageTag(lang.replace('_', '-'))}"/>
                             <g:set var="paramsWithLang" value="${params + [lang:lang]}"/>
                             <li>
