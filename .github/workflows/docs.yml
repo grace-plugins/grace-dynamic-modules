@@ -37,7 +37,7 @@ jobs:
         run: ./gradlew docs
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: rainboyan/deploy-github-pages@v1
+        uses: rainboyan/deploy-github-pages@v1.1.0
         env:
           VERSION: ${{ steps.current_version.outputs.projectVersion }}
           TOKEN: ${{ secrets.GH_TOKEN }}
