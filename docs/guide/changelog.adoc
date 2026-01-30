@@ -1,4 +1,16 @@
+### 1.0.0
+
+link:{github}/releases/tag/v1.0.0[release notes]
+
+* Update changelog and docs
+* Create Language plugin to provide languages of web site
+* Add Maven central snapshots repository
+* Update deploy-github-pages to 1.1.0
+* Upgrade to Gradle 7.6.6
+
 ### 1.0.0-RC2
+
+link:{github}/releases/tag/v1.0.0-RC2[release notes]
 
 * Update README
 * Update documentation
@@ -15,6 +27,8 @@
 
 ### 1.0.0-RC1
 
+link:{github}/releases/tag/v1.0.0-RC1[release notes]
+
 * Update sample application, add Menu plugin to demonstrate how to use
 * Provide dynamic modules WebSection and WebItem in this plugin
 * Remove META-INF/grails-plugin.xml in favor of the generated file
@@ -23,6 +37,8 @@
 * Update POM description
 
 ### 1.0.0-M1
+
+link:{github}/releases/tag/v1.0.0-M1[release notes]
 
 * Release v1.0.0-M1
 * Update README.md

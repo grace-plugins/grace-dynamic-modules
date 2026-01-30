@@ -9,7 +9,17 @@ repositories {
 }
 
 dependencies {
-    implementation "org.graceframework:grace-plugin-api"
     implementation "org.graceframework.plugins:dynamic-modules:{version}"
 }
+----
+
+Currently, Grace `dynamic-modules` plugin provides two module types,
+
+* WebItem
+* WebSection
+
+.app/plugins/grace/demos/MenuGrailsPlugin.groovy
+[source,groovy]
+----
+include::app/plugins/grace/demos/MenuGrailsPlugin.groovy[lines=7;16..32;55..56]
 ----
